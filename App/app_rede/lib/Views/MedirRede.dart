@@ -4,7 +4,13 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sizer/sizer.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'package:app_rede/Views/trafegos/Downloads.dart';
+import 'package:app_rede/Views/trafegos/NavegaInternet.dart';
+import 'package:app_rede/Views/trafegos/RedePrivada.dart';
+import 'package:app_rede/Views/trafegos/Streaming.dart';
+import 'package:app_rede/Views/trafegos/VideoConferencia.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
 
 class MedirRede extends StatefulWidget {
@@ -15,6 +21,7 @@ class MedirRede extends StatefulWidget {
 }
 
 class _MedirRedeState extends State<MedirRede> {
+  final _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,42 +31,38 @@ class _MedirRedeState extends State<MedirRede> {
         appBar: appBar('medir rede'),
         body: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 2.h),
-              child: Text(
-                'Rede privada',
-                style:
-                    GoogleFonts.abel(fontSize: 30, fontWeight: FontWeight.w200),
+            SizedBox(
+              height: 72.h,
+              
+              child: PageView(
+                controller: _controller,
+                children: [
+                  RedePrivada(),
+                  StreamingVideo(),
+                  VideoConferencia(),
+                  NavegacaoInternet(),
+                  Downloads(),
+                ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 3.h),
-              child: Center(
-                child: CircularPercentIndicator(
-                  animation: true,
-                  animationDuration: 1000,
-                  radius: 120,
-                  lineWidth: 35,
-                  percent: 0.4,
-                  progressColor: Colors.tealAccent.shade700,
-                  backgroundColor: Colors.tealAccent,
-                  circularStrokeCap: CircularStrokeCap.round,
-                  center: Text(
-                    '40 Mb',
-                    style: TextStyle(
-                        fontSize: 40, color: Colors.tealAccent.shade700),
-                  ),
-                ),
-              ),
+            SmoothPageIndicator(
+              controller: _controller,
+              count: 5,
+              effect: JumpingDotEffect(
+                  activeDotColor: Colors.teal,
+                  dotColor: Colors.teal.shade100,
+                  dotHeight: 20,
+                  dotWidth: 20,
+                  spacing: 20,
+                  verticalOffset: 5),
             ),
-  
           ],
         ),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
           animationDuration: Duration(microseconds: 300),
-          height: 9.h,
+          height: 8.h,
           onTap: (index) {
             print(index);
             if (index == 0) {

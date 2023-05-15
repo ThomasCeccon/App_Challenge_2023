@@ -42,6 +42,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   data_connection_checker: ^0.3.4
   connectivity_plus: ^3.0.6
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
