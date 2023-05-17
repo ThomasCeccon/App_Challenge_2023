@@ -18,13 +18,14 @@ class _NavegacaoInternetState extends State<NavegacaoInternet> {
       return Scaffold(
        backgroundColor: Colors.cyan.shade100,
         body: Column(children: [
+          
           //rede navegando internet
           Padding(
             padding: EdgeInsets.only(top: 4.h),
             child: Text(
               'Navegando internet',
               style:
-                  GoogleFonts.abel(fontSize: 30, fontWeight: FontWeight.w200),
+                  GoogleFonts.abel(fontSize: 35, fontWeight: FontWeight.w200),
             ),
           ),
           Padding(
@@ -54,7 +55,7 @@ class _NavegacaoInternetState extends State<NavegacaoInternet> {
                 EdgeInsets.only(top: 3.h, left: 5.w, right: 5.w, bottom: 5.h),
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('Medir'),
+              child: Text('Detalhes'),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, elevation: 10),
             ),

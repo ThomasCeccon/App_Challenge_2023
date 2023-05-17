@@ -43,6 +43,8 @@ dependencies:
   data_connection_checker: ^0.3.4
   connectivity_plus: ^3.0.6
   smooth_page_indicator: ^1.1.0
+  lottie: ^2.3.2
+  flutter_animate: ^4.1.1+1
 
 dev_dependencies:
   flutter_test:
@@ -67,9 +69,15 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/inaremove.png
+    - assets/images/viaremove.png
+    - assets/images/netflix.png
+    - assets/images/spotify.png
+    - assets/images/teams.png
+    - assets/images/discordia.png
+    - assets/images/cromada.png
+    - assets/images/zoom.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

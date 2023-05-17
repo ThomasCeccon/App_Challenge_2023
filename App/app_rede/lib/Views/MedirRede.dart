@@ -33,7 +33,6 @@ class _MedirRedeState extends State<MedirRede> {
           children: [
             SizedBox(
               height: 72.h,
-              
               child: PageView(
                 controller: _controller,
                 children: [
@@ -67,8 +66,13 @@ class _MedirRedeState extends State<MedirRede> {
             print(index);
             if (index == 0) {
               Navigator.pushNamed(context, '/homepage');
-            } else if (index == 1) {
-            } else {}
+            }
+            if (index == 1) {
+              Navigator.pushNamed(context, '/inforede');
+            }
+            if (index == 2) {
+              Navigator.pushNamed(context, '/config');
+            }
           },
           items: [
             Icon(
@@ -76,7 +80,7 @@ class _MedirRedeState extends State<MedirRede> {
               color: Colors.white,
             ),
             Icon(
-              Icons.add,
+              Icons.wifi,
               color: Colors.white,
             ),
             Icon(

@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:app_rede/constants/constatsAppbar.dart';
@@ -22,80 +25,86 @@ class _HomePageState extends State<HomePage> {
         appBar: appBar('homepage'),
 
         //corpo da pagina inicial
-        body: SizedBox(
-          child: Center(
+        body: Center(
+          child: Container(
+            width: 87.w,
+            height: 80.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.teal[100],
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.teal.shade300,
+                    offset: Offset(4.0, 4.0),
+                    blurRadius: 15.0,
+                    spreadRadius: 1.0),
+                BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-4.0, -4.0),
+                    blurRadius: 15.0,
+                    spreadRadius: 1.0),
+              ],
+            ),
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 5.h, bottom: 2.h),
-                  child: Container(
-                    width: 80.w,
-                    height: 10.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.w),
-                        border:
-                            Border.all(width: 1.5, color: Colors.blueAccent),
-                        color: Colors.blue.shade100),
-                    child: TextButton(
-                      onPressed: (() {
-                        Navigator.pushNamed(context, '/medirrede');
-                      }),
-                      child: Text(
-                        "Tráfego",
-                        style: GoogleFonts.battambang(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.blueGrey),
+                  padding: EdgeInsets.only(top: 4.h),
+                  child: Text(
+                    'Dados consumidos no mês',
+                    style: GoogleFonts.abel(
+                        fontSize: 30, fontWeight: FontWeight.w200),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 5.h),
+                  child: Center(
+                    child: CircularPercentIndicator(
+                      animation: true,
+                      animationDuration: 1000,
+                      radius: 120,
+                      lineWidth: 35,
+                      percent: 0.4,
+                      progressColor: Colors.tealAccent.shade700,
+                      backgroundColor: Colors.tealAccent,
+                      circularStrokeCap: CircularStrokeCap.round,
+                      center: Text(
+                        '40 GB',
+                        style: TextStyle(
+                            fontSize: 40, color: Colors.tealAccent.shade700),
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 2.h),
-                  child: Container(
-                    width: 80.w,
-                    height: 10.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.w),
-                        border:
-                            Border.all(width: 1.5, color: Colors.blueAccent),
-                        color: Colors.blue.shade100),
-                    child: TextButton(
-                      onPressed: (() {
-                        Navigator.pushNamed(context, '/medirapps');
-                      }),
-                      child: Text(
-                        "Medir apps",
-                        style: GoogleFonts.battambang(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.blueGrey),
-                      ),
+                  padding: EdgeInsets.only(top: 5.h, bottom: 1.h),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/medirrede');
+                    },
+                    child: Text(
+                      'Mais detalhes',
+                      style: GoogleFonts.battambang(fontSize: 15),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.tealAccent.shade700,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 2.h),
-                  child: Container(
-                    width: 80.w,
-                    height: 10.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.w),
-                        border:
-                            Border.all(width: 1.5, color: Colors.blueAccent),
-                        color: Colors.blue.shade100),
-                    child: TextButton(
-                      onPressed: (() {}),
-                      child: Text(
-                        "Outras informações",
-                        style: GoogleFonts.battambang(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.blueGrey),
-                      ),
-                    ),
-                  ),
+                Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                 Container(
+                  height: 5.h,
+                  width: 10.w,
+                  child: Image.asset('assets/images/inaremove.png',),
+                  
                 ),
+                Container(
+                  height: 10.h,
+                  width: 20.w,
+                  child: Image.asset('assets/images/viaremove.png'),
+                ),
+               ],),
               ],
             ),
           ),

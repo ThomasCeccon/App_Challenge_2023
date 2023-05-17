@@ -1,11 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:sizer/sizer.dart';
 
+import 'package:app_rede/Repositories_apps/Infoapp_repositories.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
 
 class MedirApps extends StatefulWidget {
@@ -22,48 +21,24 @@ class _MedirAppsState extends State<MedirApps> {
   String userPost = '';
   @override
   Widget build(BuildContext context) {
+    final tabela = Infoapp_repositories
+        .tabela; //aceesando e recebendo os valores para tabela
+
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
         backgroundColor: Colors.cyan.shade100,
         appBar: appBar('medir app'),
-        body: Column(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(top: 2.h,left: 5.w,right: 5.w),
-              child: TextField(
-                controller: _textController,
-                decoration: InputDecoration(
-                  hintText: "Digite o app",
-                   isDense: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      _textController.clear();
-                    },
-                    icon: Icon(Icons.clear),
-                  ), //apagar palavra
-                ),
-              ),
-            ),
-            Container(
-              child: Center(child: Text(userPost)),
-            ),
-            MaterialButton(
-              onPressed: () {
-                setState(() {
-                  userPost = _textController.text;
-                });
-              },
-              color: Colors.blue,
-              child: Text(
-                'post',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+        body: ListView.separated(
+            itemBuilder: (BuildContext context, int Infoapp) {
+              return ListTile(
+                leading: Image.asset(tabela[Infoapp].icone),
+                title: Text(tabela[Infoapp].nome),
+                trailing: Text(tabela[Infoapp].dados_uso.toString()),
+              );
+            },
+            padding: EdgeInsets.all(5.w),
+            separatorBuilder: (_, ___) => Divider(height: 4.h),
+            itemCount: tabela.length),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
@@ -72,21 +47,12 @@ class _MedirAppsState extends State<MedirApps> {
           onTap: (index) {
             print(index);
             if (index == 0) {
-              Navigator.pushNamed(context, '/homepage');
-            } else if (index == 1) {
-            } else {}
+              Navigator.pushNamed(context, '/medirrede');
+            }
           },
           items: [
             Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.settings,
+              Icons.arrow_back,
               color: Colors.white,
             ),
           ],

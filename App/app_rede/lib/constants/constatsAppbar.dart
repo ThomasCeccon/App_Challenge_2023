@@ -9,7 +9,7 @@ appBar(String goTo){
             centerTitle: true,
             backgroundColor: Colors.tealAccent.shade700,         
                title: Text(
-              'MediRED',
+              'NetFlow',
               style: GoogleFonts.aBeeZee(
                 color: Colors.white,
                 fontSize: 40,
@@ -36,7 +36,7 @@ appBar(String goTo){
                 ),
                 */
             title: Text(
-              'MediRED',
+              'NetFlow',
               style: GoogleFonts.aBeeZee(
                 color: Colors.white,
                 fontSize: 40,

@@ -25,7 +25,7 @@ class _DownloadsState extends State<Downloads> {
             child: Text(
               'Downloads',
               style:
-                  GoogleFonts.abel(fontSize: 30, fontWeight: FontWeight.w200),
+                  GoogleFonts.abel(fontSize: 35, fontWeight: FontWeight.w200),
             ),
           ),
           Padding(
@@ -55,7 +55,7 @@ class _DownloadsState extends State<Downloads> {
                 EdgeInsets.only(top: 3.h, left: 5.w, right: 5.w, bottom: 5.h),
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('Medir'),
+              child: Text('Detalhes'),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, elevation: 10),
             ),
