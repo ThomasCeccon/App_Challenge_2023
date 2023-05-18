@@ -23,7 +23,7 @@ class _NavegacaoInternetState extends State<NavegacaoInternet> {
           Padding(
             padding: EdgeInsets.only(top: 4.h),
             child: Text(
-              'Navegando internet',
+              'Dados Navegador',
               style:
                   GoogleFonts.abel(fontSize: 35, fontWeight: FontWeight.w200),
             ),
@@ -54,7 +54,9 @@ class _NavegacaoInternetState extends State<NavegacaoInternet> {
             padding:
                 EdgeInsets.only(top: 3.h, left: 5.w, right: 5.w, bottom: 5.h),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/infonavegandonet');
+              },
               child: Text('Detalhes'),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, elevation: 10),

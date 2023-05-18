@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         body: Center(
           child: Container(
             width: 87.w,
-            height: 80.h,
+            height: 78.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.teal[100],
@@ -76,7 +74,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 5.h, bottom: 1.h),
+                  padding: EdgeInsets.only(
+                    top: 3.h,
+                  ),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/medirrede');
@@ -90,21 +90,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                 Container(
-                  height: 5.h,
-                  width: 10.w,
-                  child: Image.asset('assets/images/inaremove.png',),
-                  
-                ),
                 Container(
-                  height: 10.h,
-                  width: 20.w,
-                  child: Image.asset('assets/images/viaremove.png'),
+                  margin: EdgeInsets.all(1.h),
+                  height: 12.h,
+                  child: Image.asset('assets/images/colaboradores.png'),
                 ),
-               ],),
               ],
             ),
           ),

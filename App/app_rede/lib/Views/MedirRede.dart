@@ -8,9 +8,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:app_rede/Views/trafegos/Downloads.dart';
 import 'package:app_rede/Views/trafegos/NavegaInternet.dart';
-import 'package:app_rede/Views/trafegos/RedePrivada.dart';
 import 'package:app_rede/Views/trafegos/Streaming.dart';
-import 'package:app_rede/Views/trafegos/VideoConferencia.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
 
 class MedirRede extends StatefulWidget {
@@ -36,17 +34,15 @@ class _MedirRedeState extends State<MedirRede> {
               child: PageView(
                 controller: _controller,
                 children: [
-                  RedePrivada(),
-                  StreamingVideo(),
-                  VideoConferencia(),
                   NavegacaoInternet(),
+                  StreamingVideo(),
                   Downloads(),
                 ],
               ),
             ),
             SmoothPageIndicator(
               controller: _controller,
-              count: 5,
+              count: 3,
               effect: JumpingDotEffect(
                   activeDotColor: Colors.teal,
                   dotColor: Colors.teal.shade100,

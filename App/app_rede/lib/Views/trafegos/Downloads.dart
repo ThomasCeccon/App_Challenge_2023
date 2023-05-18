@@ -54,7 +54,9 @@ class _DownloadsState extends State<Downloads> {
             padding:
                 EdgeInsets.only(top: 3.h, left: 5.w, right: 5.w, bottom: 5.h),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/infodownload');
+              },
               child: Text('Detalhes'),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, elevation: 10),
