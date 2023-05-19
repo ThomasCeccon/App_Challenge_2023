@@ -8,6 +8,8 @@ import 'package:app_rede/DadosConfig/InfoConfig.dart';
 import 'package:app_rede/Repositories_config/infoaconfig_repositories.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
 
+import '../modelo_processo/Process_Model.dart';
+
 class Configuracao extends StatefulWidget {
   const Configuracao({super.key});
 
@@ -16,6 +18,7 @@ class Configuracao extends StatefulWidget {
 }
 
 class _ConfiguracaoState extends State<Configuracao> {
+  List<ProcessModel> textWidgets = [];
   @override
   Widget build(BuildContext context) {
     final tabelas = InfoConfigRepositories
@@ -41,11 +44,11 @@ class _ConfiguracaoState extends State<Configuracao> {
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
           animationDuration: Duration(microseconds: 300),
-          height: 9.h,
+          height: 5.h,
           onTap: (index) {
             print(index);
             if (index == 0) {
-              Navigator.pushNamed(context, '/medirrede');
+              Navigator.pushNamed(context, '/medirrede',arguments:textWidgets);
             }
           },
           items: [

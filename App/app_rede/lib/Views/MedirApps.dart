@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 
 import 'package:app_rede/Repositories_apps/Infoapp_repositories.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
+import 'package:app_rede/modelo_processo/Process_Model.dart';
 
 class MedirApps extends StatefulWidget {
   const MedirApps({super.key});
@@ -15,12 +16,14 @@ class MedirApps extends StatefulWidget {
 }
 
 class _MedirAppsState extends State<MedirApps> {
+  List<ProcessModel> textWidgets = [];
   //controlar o tipo de entrada
   final _textController = TextEditingController();
 
   String userPost = '';
   @override
   Widget build(BuildContext context) {
+    //  final args = ModalRoute.of(context)!.settings.arguments as ProcessModel;
     final tabela = Infoapp_repositories
         .tabela; //aceesando e recebendo os valores para tabela
 
@@ -43,11 +46,12 @@ class _MedirAppsState extends State<MedirApps> {
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
           animationDuration: Duration(microseconds: 300),
-          height: 9.h,
+          height: 5.h,
           onTap: (index) {
             print(index);
             if (index == 0) {
-              Navigator.pushNamed(context, '/medirrede');
+              Navigator.pushNamed(context, '/medirrede',
+                  arguments: textWidgets);
             }
           },
           items: [

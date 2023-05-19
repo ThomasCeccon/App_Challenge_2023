@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:app_rede/Views/Configuracoes.dart';
 import 'package:app_rede/Views/HomePage.dart';
@@ -12,7 +13,6 @@ import 'package:app_rede/Views/MedirRede.dart';
 import 'package:app_rede/Views/trafegos/Downloads.dart';
 import 'package:app_rede/Views/trafegos/NavegaInternet.dart';
 import 'package:app_rede/Views/trafegos/Streaming.dart';
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,14 +28,12 @@ class MyApp extends StatelessWidget {
         '/medirapps': (context) => const MedirApps(),
         '/streamingvideo': (context) => const StreamingVideo(),
         '/navegacaointernet': (context) => const NavegacaoInternet(),
-        '/downloadss': (context) => const Downloads(),
+        '/download': (context) => Downloads(10),
         '/loadingtela': (context) => const LoadingTela(),
         '/inforede': (context) => const InfoRede(),
         '/config': (context) => const Configuracao(),
-        '/infodownload': (context) => const InfoDownload(),
-         '/infonavegandonet': ((context) => InfoNavegandoNet()
-        )
-        //'/conexaorede':(context) => const (),
+        '/infodownload': (context) => InfoDownload(),
+        '/infonavegandonet': ((context) => InfoNavegandoNet())
       },
     );
   }

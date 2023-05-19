@@ -1,7 +1,9 @@
 //conectar com  externa ou banco de dados
 import '../DadosApp/Infoapp.dart';
 
+
 class Infoapp_repositories{
+  
   
   static List<Infoapp>tabela=[
     Infoapp(icone:'assets/images/spotify.png', nome: 'Spotify', dados_uso: 100 ),

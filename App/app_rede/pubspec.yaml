@@ -48,9 +48,11 @@ dependencies:
   flutter_animate: ^4.1.1+1
   dio: ^5.1.2
   rxdart: ^0.27.7
-  fl_chart: ^0.62.0
   flutter_launcher_icons: ^0.11.0
   flutter_native_splash: ^2.2.16
+  window_manager: ^0.3.2
+  fl_chart: ^0.62.0
+
   
 
 dev_dependencies:

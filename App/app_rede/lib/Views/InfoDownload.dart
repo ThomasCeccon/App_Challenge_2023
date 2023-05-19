@@ -7,6 +7,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'package:app_rede/constants/constatsAppbar.dart';
 
+import '../modelo_processo/Process_Model.dart';
+
 class InfoDownload extends StatefulWidget {
   const InfoDownload({super.key});
 
@@ -15,8 +17,23 @@ class InfoDownload extends StatefulWidget {
 }
 
 class _InfoDownloadState extends State<InfoDownload> {
+  List<ProcessModel> textWidgets = [];
   late List<GDPData> _chartData;
   late TooltipBehavior _tooltipBehavior;
+  double convertToMb(String value) {
+    double valor = 0;
+
+    if (value.contains("KB")) {
+      valor = double.parse((value).replaceAll("KB", "")) / (1000);
+    } else if (value.contains("GB")) {
+      valor = double.parse((value).replaceAll("GB", "")) * 1000;
+    } else if (value.contains("MB")) {
+      valor = double.parse((value).replaceAll("MB", ""));
+    } else if (value.contains("B")) {
+      valor = double.parse((value).replaceAll("B", "")) / (1000 * 1000);
+    }
+    return valor;
+  }
 
   @override
   void initState() {
@@ -27,6 +44,15 @@ class _InfoDownloadState extends State<InfoDownload> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as List<ProcessModel>;
+    final download =
+        args.fold<double>(0, (sum, item) => sum + convertToMb(item.download));
+    ;
+    final updload =
+        args.fold<double>(0, (sum, item) => sum + convertToMb(item.upload));
+    ;
+
     return Sizer(builder: (context, orientation, deviceType) {
       return SafeArea(
         child: Scaffold(
@@ -44,7 +70,7 @@ class _InfoDownloadState extends State<InfoDownload> {
                 PieSeries<GDPData, String>(
                   dataSource: _chartData,
                   xValueMapper: (GDPData data, _) => data.download,
-                  yValueMapper: (GDPData data, _) => data.update,
+                  yValueMapper: (GDPData data, _) => data.upload,
                   dataLabelSettings: DataLabelSettings(
                     isVisible: true,
                   ),
@@ -59,11 +85,12 @@ class _InfoDownloadState extends State<InfoDownload> {
             backgroundColor: Colors.cyan.shade100,
             color: Colors.tealAccent.shade400,
             animationDuration: Duration(microseconds: 300),
-            height: 9.h,
+            height: 5.h,
             onTap: (index) {
               print(index);
               if (index == 0) {
-                Navigator.pushNamed(context, '/medirrede');
+                Navigator.pushNamed(context, '/medirrede',
+                    arguments: textWidgets);
               }
             },
             items: [
@@ -81,15 +108,30 @@ class _InfoDownloadState extends State<InfoDownload> {
   List<GDPData> getChartData() {
     final List<GDPData> chartData = [
       //json download e upload
-      GDPData('Download', 2),
+      GDPData('Download', 2 ),
       GDPData('Update', 34),
     ];
     return chartData;
   }
 }
 
+double convertToMb(String value) {
+  double valor = 0;
+
+  if (value.contains("KB")) {
+    valor = double.parse((value).replaceAll("KB", "")) / (1000);
+  } else if (value.contains("GB")) {
+    valor = double.parse((value).replaceAll("GB", "")) * 1000;
+  } else if (value.contains("MB")) {
+    valor = double.parse((value).replaceAll("MB", ""));
+  } else if (value.contains("B")) {
+    valor = double.parse((value).replaceAll("B", "")) / (1000 * 1000);
+  }
+  return valor;
+}
+
 class GDPData {
-  GDPData(this.download, this.update);
+  GDPData(this.download, this.upload);
   final String download;
-  final int update;
+  final int upload;
 }

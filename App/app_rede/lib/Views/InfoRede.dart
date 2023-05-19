@@ -9,6 +9,7 @@ import 'package:app_rede/components_grafico_rede/Charts/lineChart.dart';
 import 'package:app_rede/rede_grafico/pricePoints.dart';
 
 import '../constants/constatsAppbar.dart';
+import '../modelo_processo/Process_Model.dart';
 
 class InfoRede extends StatefulWidget {
   const InfoRede({super.key});
@@ -18,21 +19,21 @@ class InfoRede extends StatefulWidget {
 }
 
 class _InfoRedeState extends State<InfoRede> {
+   List<ProcessModel> textWidgets = [];
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
         backgroundColor: Colors.cyan.shade100,
         appBar: appBar('info rede'),
-        body: Padding(
-          padding:  EdgeInsets.only(top:6.h,bottom: 6.h),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding:  EdgeInsets.only(top:6.h,bottom: 6.h),
             child: Center(
               child: Column(children: [
                 Container(
-               
                   margin: EdgeInsets.all(3.h),
-                  padding: EdgeInsets.all(2.h),
+                  
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Colors.teal[100],
@@ -60,11 +61,11 @@ class _InfoRedeState extends State<InfoRede> {
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
           animationDuration: Duration(microseconds: 300),
-          height: 9.h,
+          height: 5.h,
           onTap: (index) {
             print(index);
             if (index == 0) {
-              Navigator.pushNamed(context, '/medirrede');
+              Navigator.pushNamed(context, '/medirrede',arguments: textWidgets);
             }
           },
           items: [

@@ -11,6 +11,8 @@ import 'package:app_rede/Views/trafegos/NavegaInternet.dart';
 import 'package:app_rede/Views/trafegos/Streaming.dart';
 import 'package:app_rede/constants/constatsAppbar.dart';
 
+import '../modelo_processo/Process_Model.dart';
+
 class MedirRede extends StatefulWidget {
   const MedirRede({super.key});
 
@@ -19,10 +21,31 @@ class MedirRede extends StatefulWidget {
 }
 
 class _MedirRedeState extends State<MedirRede> {
+  List<ProcessModel> textWidgets = [];
   final _controller = PageController();
+  double convertToMb(String value) {
+    double valor = 0;
+
+    if (value.contains("KB")) {
+      valor = double.parse((value).replaceAll("KB", "")) / (1000);
+    } else if (value.contains("GB")) {
+      valor = double.parse((value).replaceAll("GB", "")) * 1000;
+    } else if (value.contains("MB")) {
+      valor = double.parse((value).replaceAll("MB", ""));
+    } else if (value.contains("B")) {
+      valor = double.parse((value).replaceAll("B", "")) / (1000 * 1000);
+    }
+    return valor;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as List<ProcessModel>;
+    final download =
+        args.fold<double>(0, (sum, item) => sum + convertToMb(item.download));
+    ;
+
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
         backgroundColor: Colors.cyan.shade100,
@@ -30,13 +53,13 @@ class _MedirRedeState extends State<MedirRede> {
         body: Column(
           children: [
             SizedBox(
-              height: 72.h,
+              height: 40.h,
               child: PageView(
                 controller: _controller,
                 children: [
                   NavegacaoInternet(),
                   StreamingVideo(),
-                  Downloads(),
+                  Downloads(download),
                 ],
               ),
             ),
@@ -57,7 +80,7 @@ class _MedirRedeState extends State<MedirRede> {
           backgroundColor: Colors.cyan.shade100,
           color: Colors.tealAccent.shade400,
           animationDuration: Duration(microseconds: 300),
-          height: 8.h,
+          height: 5.h,
           onTap: (index) {
             print(index);
             if (index == 0) {
