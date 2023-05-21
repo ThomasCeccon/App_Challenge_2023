@@ -1,4 +1,4 @@
-# app_rede
+# NetFlow
 
 A new Flutter project.
 
